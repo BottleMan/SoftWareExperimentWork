@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage
+END
+cancelApplyManage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage/cancelApplyManage.jsp
+END
+csCancel.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage/csCancel.jsp
+END
+courseManage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage/courseManage.jsp
+END
+csCancelApply.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage/csCancelApply.jsp
+END
+csHistory.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/crManage/csHistory.jsp
+END

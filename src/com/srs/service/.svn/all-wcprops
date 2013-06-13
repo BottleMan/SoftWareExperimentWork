@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service
+END
+CourseSelectService.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service/CourseSelectService.java
+END
+CourseService.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service/CourseService.java
+END
+StudentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service/StudentService.java
+END
+UserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service/UserService.java
+END
+DepService.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/service/DepService.java
+END

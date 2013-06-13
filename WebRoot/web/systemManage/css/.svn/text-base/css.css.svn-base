@@ -1,0 +1,64 @@
+/*基本信息*/
+body {font:12px Tahoma;margin:0px;text-align:center;background:#FFF;}
+a:link,a:visited {font-size:12px;text-decoration: none;}
+a:hover{}
+
+/*页面层容器*/
+#container {width:800px;height:600px;margin:10px auto}
+
+/*页面头部*/
+#header {background:url(../../../image/login5.jpg) no-repeat}
+#menu {padding:98px 0px 0 0}
+#menu ul {float:right;list-style:none;margin:0px}
+#menu ul li {float:left;display:block;line-height:30px;margin:0 10px}
+#menu ul li a:link,#menu ul li a:visited {font-weight:bold;color:#ffffff}
+#menu ul li a:hover{}
+.menuDiv {width:1px;height:28px;background:#999}
+#banner {background:#2d80ce;width:800px;margin:auto;height:24px;border-bottom:0px solid #EFEFEF;border-top:0px solid #EFEFEF;clear:both}
+
+/*页面主体*/
+#pagebody {width:100%;margin:0 auto;height:80%;background:#ffffff;}
+
+/*页面主体左侧菜单*/
+#sidebar {float:left;clear:left;width:19%;height:100%;background:#ffffff;border:0px solid #e00}
+/*页面主体的分界*/
+#middlebar {float:left;width:1%;height:100%;border:0px solid #ffffff;background:#ff0000;}
+/*页面主体右侧主体*/
+#mainbody{float:right;width:80%;height:100%;background:#ffffff;border:0px solid #000000;clear:right}
+
+#sidebar1 {
+ width:160px; /*设定宽度*/
+ height:100%;
+ text-align:left; /*文字左对齐*/
+ float:left; /*浮动居左*/
+ clear:left; /*不允许左侧存在浮动*/
+/*超出宽度部分隐藏*/
+ background:#CCF000
+}
+#middlebar1 {
+ width:10px;
+ height:100%;
+ text-align:left;
+ float:left; /*浮动居右*/
+  /*clear:right;不允许右侧存在浮动*/
+ 
+ background:#CC1800
+}
+/*主体 右边*/
+#mainbody1 {
+ width:570px;
+ height:100%;
+ text-align:left;
+ float:left; /*浮动居右*/
+  /*clear:right;不允许右侧存在浮动*/
+ 
+ background:#CC8800
+}
+/*页面底部*/
+#footer {width:100%;margin:0 auto;height:50px;background:#ffffff}
+#pic {
+	position: relative;
+	left: 0;
+	top: 50%;
+}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- !!!!!!!!!!!!!!!!开发模式，更改后直接能看到结果!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	<constant name="struts.devMode" value="true" />
+
+	<include file="strutsxml/struts_base.xml" />
+	<include file="strutsxml/struts_system.xml" />
+	<include file="strutsxml/struts_student.xml" />
+	<include file="strutsxml/struts_course.xml" />
+	<include file="strutsxml/struts_course_select.xml" />
+	<include file="strutsxml/struts_dep.xml" />
+
+</struts>

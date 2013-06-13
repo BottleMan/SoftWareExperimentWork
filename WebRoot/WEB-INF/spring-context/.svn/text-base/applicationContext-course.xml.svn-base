@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- 课程管理 -->
+	<!-- dao -->
+	<bean id="courseDao" class="com.srs.dao.CourseDao">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+
+	<!-- service -->
+	<bean id="courseService" class="com.srs.service.CourseService">
+		<property name="courseDao" ref="courseDao"></property>
+	</bean>
+
+	<!-- action -->
+	<bean id="courseAction" class="com.srs.action.CourseAction"
+		scope="prototype">
+		<property name="courseService" ref="courseService" ></property>
+		<property name="studentService" ref="studentService" ></property>
+		<property name="courseSelectService" ref="courseSelectService" ></property>
+	</bean>
+
+</beans>

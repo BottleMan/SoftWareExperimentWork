@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="student" extends="search-default" namespace="/web">
+
+		<!-- 添加学生信息 -->
+		<action name="addStuInfor" class="studentAction" method="addStuInfor">
+			<result name="error">./studentManage/studentAdd.jsp</result>
+			<result name="success">./studentManage/studentAdd.jsp</result>
+		</action>
+
+		<action name="addStudent" class="mainAction" method="main">
+			<result name="student">index_stu.jsp</result>
+			<result name="dean">studentAdd.jsp</result>
+			<result name="department">index_dep.jsp</result>
+		</action>
+
+		<!-- 获取学生信息列表 -->
+		<action name="getStudentInforList" class="studentAction"
+			method="getStudentInfoList">
+			<result name="success">studentManage.jsp</result>
+			<result name="error">studentManage.jsp</result>
+		</action>
+
+		<!-- 删除学生信息 -->
+		<action name="deleteStudentInfor" class="studentAction" method="deleteStudentInfor">
+			<result name="success">studentManage.jsp</result>
+		</action>
+
+		<!-- 更新学生信息 -->
+		<action name="studentInforUpdate" class="studentAction" method="studentInforUpdate" />
+		
+		<!-- 学生休学处理 -->
+		<action name="studentDrop" class="studentAction" method="studentDrop" />
+
+		<!-- 学期注册 -->
+		<action name="studentRegister" class="studentAction" method="studentRegister" />
+
+		<!-- 根据学号查询学生信息 -->
+		<action name="getStudentInforById" class="studentAction"
+			method="getStudentInforById">
+			<result name="read">studentRead.jsp</result>
+			<result name="edit">studentEdit.jsp</result>
+		</action>
+
+	</package>
+</struts>

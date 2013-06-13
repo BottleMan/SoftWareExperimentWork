@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl
+END
+commands.pl
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/commands.pl
+END
+basexml.pl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/basexml.pl
+END
+connector.cgi
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/connector.cgi
+END
+io.pl
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/io.pl
+END
+config.pl
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/config.pl
+END
+upload.cgi
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/upload.cgi
+END
+util.pl
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/util.pl
+END
+upload_fck.pl
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/upload_fck.pl
+END
+vssver2.scc
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/common/fckeditor/editor/filemanager/connectors/perl/vssver2.scc
+END

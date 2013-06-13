@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="course_select" extends="search-default"
+		namespace="/web">
+		<!-- 添加选课信息 -->
+		<action name="addCS" class="courseSelectAction" method="addCS" />
+
+		<!-- 查询选课历史 -->
+		<action name="CSHistory" class="courseSelectAction" method="CSHistory">
+			<result name="success">csHistory.jsp</result>
+		</action>
+
+		<!-- 取消选课界面 -->
+		<action name="CSCancel" class="courseSelectAction" method="cancelCSHistory">
+			<result name="success">csCancel.jsp</result>
+		</action>
+
+		<!-- 申请退课界面 -->
+		<action name="CSCancelApply" class="courseSelectAction" method="cancelCSHistory">
+			<result name="success">csCancelApply.jsp</result>
+		</action>
+
+		<!-- 删除选课 -->
+		<action name="deleteCS" class="courseSelectAction" method="CSDelete"/>
+
+		<!-- 申请退课 -->
+		<action name="csApplyCancel" class="courseSelectAction" method="csApplyCancel"/>
+
+		<!-- 查询退课申请的信息 -->
+		<action name="getCancelApplyList" class="courseSelectAction"
+			method="getCancelApplyList">
+			<result name="success">cancelApplyManage.jsp</result>
+		</action>
+		
+		<!-- 查询退课申请的信息 -->
+		<action name="getCancelApplyHisList" class="courseSelectAction"
+			method="getCancelApplyHisList">
+			<result name="success">cancelApplyHisList.jsp</result>
+		</action>
+		
+		<!-- 处理退课申请 -->
+		<action name="dealCancelApply" class="courseSelectAction" method="dealCancelApply"/>
+
+	</package>
+</struts>

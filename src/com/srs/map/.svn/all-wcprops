@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map
+END
+COURSE_SELECT_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map/COURSE_SELECT_SqlMap.xml
+END
+DEP_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map/DEP_SqlMap.xml
+END
+COURSE_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map/COURSE_SqlMap.xml
+END
+STUDENT_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map/STUDENT_SqlMap.xml
+END
+USER_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/map/USER_SqlMap.xml
+END

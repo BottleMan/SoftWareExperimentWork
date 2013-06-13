@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage
+END
+subCancelCS.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/subCancelCS.jsp
+END
+courseManage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/courseManage.jsp
+END
+subCS.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/subCS.jsp
+END
+courseRead.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/courseRead.jsp
+END
+courseEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/courseEdit.jsp
+END
+courseAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/courseManage/courseAdd.jsp
+END

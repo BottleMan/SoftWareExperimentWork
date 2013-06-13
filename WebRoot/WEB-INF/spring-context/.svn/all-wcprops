@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context
+END
+applicationContext-common.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-common.xml
+END
+applicationContext-course.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-course.xml
+END
+applicationContext-user.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-user.xml
+END
+applicationContext-student.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-student.xml
+END
+applicationContext-system.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-system.xml
+END
+applicationContext-dep.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-dep.xml
+END
+applicationContext-courseSelect.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/WEB-INF/spring-context/applicationContext-courseSelect.xml
+END

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dep" extends="search-default" namespace="/web">
+
+		<!-- 学生成绩待录入列表 -->
+		<action name="resultLoad" class="depAction" method="resultLoad">
+			<result name="success">resultLoadManage.jsp</result>
+		</action>
+
+		<!-- 学生成绩录入界面 -->
+		<action name="courseMarkingPage" class="depAction" method="courseMarkingPage">
+			<result name="success">courseMarking.jsp</result>
+		</action>
+
+		<!-- 学生成绩录入 -->
+		<action name="courseMarking" class="depAction" method="courseMarking" />
+
+		<!-- 课程代选界面 -->
+		<action name="subApplyLoad" class="depAction" method="subApplyLoad">
+			<result name="success">subApplyManage.jsp</result>
+		</action>
+
+		<!-- 代选处理 -->
+		<action name="subApplyDeal" class="depAction" method="subApplyDeal" />
+
+		<!-- 查询课程信息 -->
+		<action name="courseSearch" class="depAction" method="courseSearch">
+			<result name="success">courseSearchManage.jsp</result>
+		</action>
+		
+		<!-- 查询选课信息 -->
+		<action name="csSearch" class="depAction" method="csSearch">
+			<result name="success">csSearchManage.jsp</result>
+		</action>
+		
+		<!-- 查询成绩信息 -->
+		<action name="resultSearch" class="depAction" method="resultSearch">
+			<result name="success">resultSearchManage.jsp</result>
+		</action>
+		
+		<!-- 查询学生信息 -->
+		<action name="stuSearch" class="depAction" method="stuSearch">
+			<result name="success">stuSearchManage.jsp</result>
+		</action>
+
+	</package>
+</struts>

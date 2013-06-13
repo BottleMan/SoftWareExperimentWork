@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action
+END
+CourseSelectAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/CourseSelectAction.java
+END
+AbstractAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/AbstractAction.java
+END
+DepAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/DepAction.java
+END
+SystemAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/SystemAction.java
+END
+CourseAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/CourseAction.java
+END
+StudentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/StudentAction.java
+END
+UserAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/action/UserAction.java
+END

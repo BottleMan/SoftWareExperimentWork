@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="User">
+
+	<sql id="userColumns">
+    	<![CDATA[
+    		USERNAME,PASSWORD,ROLE
+    	]]>
+	</sql>
+
+	<!-- 登录验证 -->
+	<select id="checkLogin" parameterClass="java.util.HashMap"
+		resultClass="com.srs.bean.UserObj">
+		select
+		<include refid="userColumns" />
+		from userlogin u
+		<dynamic prepend="where">
+			<isNotNull property="userName" prepend="and">
+				u.username=#userName#
+			</isNotNull>
+			<isNotNull property="password" prepend="and">
+				u.password=#password#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 检验密码 -->
+	<select id="checkPwd" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from userlogin u
+		<dynamic prepend="where">
+			<isNotNull property="userName" prepend="and">
+				u.username=#userName#
+			</isNotNull>
+			<isNotNull property="oldPassword" prepend="and">
+				u.password=#oldPassword#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 判断是否注册 -->
+	<select id="isRegist" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from userlogin t1 left join studentInformation t2
+		on t1.userName= t2.studentid
+		<dynamic prepend="where">
+			<isNotNull property="userName" prepend="and">
+				t1.username=#userName#
+			</isNotNull>
+			<isNotNull property="FirstRegister" prepend="and">
+				t2.FirstRegister=#FirstRegister#
+			</isNotNull>
+			<isNotNull property="SecondRegister" prepend="and">
+				t2.SecondRegister=#SecondRegister#
+			</isNotNull>
+			<isNotNull property="ThirdRegister" prepend="and">
+				t2.ThirdRegister=#ThirdRegister#
+			</isNotNull>
+			<isNotNull property="FourthRegister" prepend="and">
+				t2.FourthRegister=#FourthRegister#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 获取当前学期 -->
+	<select id="getCurrentTerm" resultClass="Integer">
+		select max(currentTerm)
+		from sysConfig
+	</select>
+
+	<!-- 获取学籍冻结标识 -->
+	<select id="isFrozen" resultClass="String">
+		select DropOut
+		from studentInformation where studentId=#userName#
+	</select>
+
+	<!-- 修改密码 -->
+	<update id="updatePassword" parameterClass="java.util.HashMap">
+		update userLogin set
+		password=#password# where userName=#userName#
+	</update>
+
+	<!-- 添加用户信息 -->
+	<insert id="addUser" parameterClass="com.srs.bean.UserObj">
+		insert into userLogin
+		(userName,password,role) values
+		(#userName#,#password#,#role#)
+	</insert>
+</sqlMap>

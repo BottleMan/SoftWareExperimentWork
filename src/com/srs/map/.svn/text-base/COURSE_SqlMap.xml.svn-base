@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Course">
+
+	<sql id="courseColumns">
+    	<![CDATA[
+    		COURSEID,
+    		COURSENM,
+    		CREDIT,
+    		SEMESTER,
+    		FIRSTCOURSEID,
+    		MAJOR,
+    		TYPE,
+    		SCHOOLTIME,
+    		TEACHER,
+    		PLACE,
+    		NUMBER,
+    		CLASSHOUR
+    	]]>
+	</sql>
+
+	<!-- 查询所有课程信息 -->
+	<select id="queryCourseAll" resultClass="com.srs.bean.CourseObj">
+		select
+		<include refid="courseColumns" />
+		from CourseInformation c
+	</select>
+
+	<!-- 查询所有【可选课】的课程数量 -->
+	<select id="getRCourseCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from CourseInformation
+		<dynamic prepend="where">
+			<isNotNull property="Department" prepend="and">
+				MAJOR=#Department#
+			</isNotNull>
+			<isNotNull property="studentId" prepend="and">
+				CourseId not in
+				(
+				select CourseId from CourseSelect where studentId=#studentId#
+				)
+				and courseId not in 
+				(
+				select CourseId from CourseSubstitude where studentId=#studentId# and Handle2=0
+				)
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 查询所有【撤销可选课】的课程数量 -->
+	<select id="getCancelSubRCCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from CourseSubstitude
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				studentId=#studentId#
+				and Handle2=0;
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 获取所有【可撤销代选】课程信息 -->
+	<select id="getCancelSubRCList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select COURSEID, COURSENM, CREDIT,TEACHER, APPLYTIME
+		from
+		(select t1.COURSEID, COURSENM, CREDIT,TEACHER, APPLYTIME
+		,row_number()
+		over(order by t1.COURSEID asc) rowno from
+		CourseInformation t1 left
+		join CourseSubstitude t2 on t1.courseId=t2.courseId
+		where
+		studentId=#studentId# and handle2=#handle2#
+		) T
+		where rowno between
+		$rowStart$ and $rowEnd$
+	</select>
+
+	<!-- 【删除代选】 -->
+	<update id="subCancelCS" parameterClass="java.util.HashMap">
+		delete
+		CourseSubstitude
+		where COURSEID=#CourseId# and STUDENTID=#StudentId#
+	</update>
+
+	<!-- 查询所有课程数量 -->
+	<select id="countCourse" resultClass="Integer">
+		select count(1) COUNT
+		from
+		CourseInformation
+	</select>
+
+	<!-- 获取所有课程信息 -->
+	<select id="getCourseInfoList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		<include refid="courseColumns" />
+		from
+		(select
+		<include refid="courseColumns" />
+		,row_number() over(order by COURSEID asc) rowno from
+		CourseInformation) T
+		where rowno between $rowStart$ and $rowEnd$
+
+	</select>
+
+	<!-- 获取所有【可注册】课程信息 -->
+	<select id="getRCourseInfoList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		<include refid="courseColumns" />
+		from
+		(select
+		<include refid="courseColumns" />
+		,row_number() over(order by COURSEID asc) rowno from
+		CourseInformation
+		<dynamic prepend="where">
+			<isNotNull property="Department" prepend="and">
+				MAJOR=#Department#
+			</isNotNull>
+			<isNotNull property="studentId" prepend="and">
+				CourseId not in
+				(
+				select CourseId from CourseSelect where studentId=#studentId#
+				)
+			</isNotNull>
+		</dynamic>
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+
+	</select>
+
+	<!-- 获取所有【可代选】课程信息 -->
+	<select id="getSubCourseInfoList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		<include refid="courseColumns" />
+		from
+		(select
+		<include refid="courseColumns" />
+		,row_number() over(order by COURSEID asc) rowno from
+		CourseInformation
+		<dynamic prepend="where">
+			<isNotNull property="Department" prepend="and">
+				MAJOR=#Department#
+			</isNotNull>
+			<isNotNull property="studentId" prepend="and">
+				CourseId not in
+				(
+				select CourseId from CourseSelect where studentId=#studentId#
+				) and
+				CourseId not in
+				(
+				select CourseId from CourseSubstitude where
+				studentId=#studentId# and Handle2=0
+				)
+
+			</isNotNull>
+		</dynamic>
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+
+	</select>
+
+
+
+	<!-- 根据课程编号查询课程信息 -->
+	<select id="getCourseInforById" parameterClass="java.util.HashMap"
+		resultClass="com.srs.bean.CourseObj">
+		select
+		<include refid="courseColumns" />
+		from CourseInformation
+		<dynamic prepend="where">
+			<isNotNull property="courseId" prepend="and">
+				COURSEID=#courseId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 判断是否有此编号的课程 -->
+	<select id="hadCourse" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1)
+		COUNT from CourseInformation
+		<dynamic prepend="where">
+			<isNotNull property="courseId" prepend="and">
+				COURSEID=#courseId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 根据学期和适合专业选择课程 -->
+	<select id="queryCourseBySemesterAndMajor" parameterClass="java.util.HashMap"
+		resultClass="com.srs.bean.CourseObj">
+		select
+		<include refid="courseColumns" />
+		from CourseInformation c
+		<dynamic prepend="where">
+			<isNotNull property="semester" prepend="and">
+				c.semester=#semester#
+			</isNotNull>
+			<isNotNull property="major" prepend="and">
+				c.major=#major#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 添加课程信息 -->
+	<insert id="courseAdd" parameterClass="com.srs.bean.CourseObj">
+		insert into
+		CourseInformation(
+		COURSEID,COURSENM,CREDIT,SEMESTER,FIRSTCOURSEID,MAJOR,TYPE,SCHOOLTIME,TEACHER,PLACE,NUMBER,CLASSHOUR
+		)
+		values(#CourseId#,#CourseNM#,#Credit#,#Semester#,#FirstCourseID#,#Major#,#Type#,#Schooltime#,#Teacher#,#Place#,#Number#,#ClassHour#)
+	</insert>
+
+	<!-- 更新课程信息 -->
+	<update id="courseUpdate" parameterClass="com.srs.bean.CourseObj">
+		update CourseInformation
+		<dynamic prepend="set">
+			<isNotNull property="CourseNM" prepend=",">
+				COURSENM=#CourseNM:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Credit" prepend=",">
+				CREDIT=#Credit:FLOAT#
+			</isNotNull>
+			<isNotNull property="Semester" prepend=",">
+				SEMESTER=#Semester:VARCHAR#
+			</isNotNull>
+			<isNotNull property="FirstCourseID" prepend=",">
+				FIRSTCOURSEID=#FirstCourseID:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Major" prepend=",">
+				MAJOR=#Major:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Type" prepend=",">
+				TYPE=#Type:INT#
+			</isNotNull>
+			<isNotNull property="Schooltime" prepend=",">
+				SCHOOLTIME=#Schooltime:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Teacher" prepend=",">
+				TEACHER=#Teacher:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Place" prepend=",">
+				PLACE=#Place:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Number" prepend=",">
+				NUMBER=#Number:INT#
+			</isNotNull>
+			<isNotNull property="ClassHour" prepend=",">
+				CLASSHOUR=#ClassHour:INT#
+			</isNotNull>
+		</dynamic>
+		where COURSEID=#CourseId:VARCHAR#
+	</update>
+
+	<!-- 删除课程基本信息 -->
+	<update id="courseDelete" parameterClass="java.util.HashMap">
+		delete
+		CourseInformation where COURSEID=#courseId#
+	</update>
+
+</sqlMap>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao
+END
+CourseSelectDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao/CourseSelectDao.java
+END
+CourseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao/CourseDao.java
+END
+StudentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao/StudentDao.java
+END
+UserDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao/UserDao.java
+END
+DepDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/Bottle/!svn/ver/2/SRS/src/com/srs/dao/DepDao.java
+END

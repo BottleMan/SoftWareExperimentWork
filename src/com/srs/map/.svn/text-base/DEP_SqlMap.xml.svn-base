@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Dep">
+
+	<!-- 【查询选课数量】 -->
+	<select id="csSearchCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) count from CourseSelect where
+		StudentId=#studentId# and Term=#term#
+	</select>
+
+	<!-- 【查询选课列表】 -->
+	<select id="CsSearchList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		CourseNM,StudentId,CourseId,Term,CourseGrade,Pass
+		from
+		(
+		select CourseNM,StudentId,t1.CourseId,Term,CourseGrade,Pass
+		,row_number() over(order by t1.COURSEID asc) rowno
+		from CourseSelect t1
+		left join CourseInformation t2 on
+		t1.CourseId=t2.CourseId
+		where
+		StudentId=#studentId# and t1.Term=#term#
+		)T
+		where rowno between
+		$rowStart$ and $rowEnd$
+
+	</select>
+
+	<!-- 【未处理申请的数量】 -->
+	<select id="subApplyCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) count from CourseSubstitude where
+		handle2='0'
+	</select>
+
+	<!-- 【未处理申请的列表】 -->
+	<select id="getSubApplyList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select CourseNM,StudentId,StudentNM,CourseId,ApplyTime
+		from
+		(
+		select
+		CourseNM,t1.StudentId,t1.CourseId,t3.StudentNM,ApplyTime,row_number()
+		over(order by t1.COURSEID asc) rowno
+		from CourseSubstitude t1 left join
+		CourseInformation t2 on
+		t1.CourseId=t2.CourseId
+		left join
+		StudentInformation t3 on t1.StudentID=t3.StudentID
+		where Handle2=0
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+	</select>
+
+	<!-- 处理申请 -->
+	<update id="subApplyDeal" parameterClass="java.util.HashMap">
+		update CourseSubstitude
+		set handle2=#operator# where studentId=#studentId# and
+		courseId=#courseId#
+	</update>
+
+	<!-- 添加选课信息 -->
+	<insert id="insertSubCS" parameterClass="java.util.HashMap">
+		insert into CourseSelect
+		(studentId,courseId,CourseGrade,Pass,Term) values
+		(#studentId#,#courseId#,'-1',0,(select max(currentTerm) from
+		sysConfig))
+	</insert>
+
+	<!-- 学生未录入的【成绩数量】 -->
+	<select id="studentResultCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) count from courseSelect where
+		studentId=#studentId# and term=#term# and courseGrade='-1'
+	</select>
+
+	<!-- 【课程信息】 -->
+	<select id="courseMarkingPage" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		CourseNM,StudentId,t1.CourseId,Credit,Semester,FirstCourseID,Major,Type
+		from CourseSelect t1 left join
+		CourseInformation t2 on
+		t1.CourseId=t2.CourseId
+		where
+		StudentId=#studentId# and
+		t1.CourseId=#courseId#
+	</select>
+
+	<!-- 【录入成绩】 -->
+	<update id="courseMarking" parameterClass="java.util.HashMap">
+		update CourseSelect
+		set courseGrade=#result#, pass=#pass#
+		where
+		StudentId=#studentId# and
+		CourseId=#courseId# and Term=#term#
+	</update>
+
+	<!-- 学生未录入的【课程列表】 -->
+	<select id="getResultList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select CourseNM,StudentId,CourseId,CourseGrade,Pass,Term
+		from
+		(
+		select
+		CourseNM,StudentId,t1.CourseId,CourseGrade,Pass,Term,row_number()
+		over(order by t1.COURSEID asc) rowno
+		from CourseSelect t1 left join
+		CourseInformation t2 on t1.CourseId=t2.CourseId
+		where
+		t1.StudentId=#studentId# and t1.term=#term# and courseGrade='-1'
+		) T
+		where rowno between
+		$rowStart$ and $rowEnd$
+
+	</select>
+
+	<!-- 将选课信息插入下一学期的选课记录 -->
+	<insert id="failChoose" parameterClass="java.util.HashMap">
+		insert into CourseSelect
+		(studentId,courseId,CourseGrade,Pass,Term) values
+		(#studentId#,#courseId#,'-1',0,1+(select max(term) from CourseSelect
+		where studentId=#studentId# and courseId=#courseId#)
+		)
+	</insert>
+
+	<!-- 查询课程信息的数量 -->
+	<select id="courseSearchCount" parameterClass="com.srs.bean.CourseObj"
+		resultClass="Integer">
+		select count(1) count
+		from CourseInformation
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="CourseId">
+				CourseId like
+				'%$CourseId$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="CourseNM">
+				CourseNM like
+				'%$CourseNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Credit">
+				Credit like
+				'%$Credit$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Semester">
+				Semester like
+				'%$Semester$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="FirstCourseID">
+				FirstCourseID like
+				'%$FirstCourseID$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Major">
+				Major like '%$Major$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Type">
+				Type like '%$Type$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Schooltime">
+				Schooltime like
+				'%$Schooltime$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Teacher">
+				Teacher like
+				'%$Teacher$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Place">
+				Place like '%$Place$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Number">
+				Number like
+				'%$Number$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="ClassHour">
+				ClassHour like
+				'%$ClassHour$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<!-- 查询课程信息 -->
+	<select id="courseSearch" parameterClass="com.srs.bean.CourseObj"
+		resultClass="java.util.HashMap">
+		select COURSEID,COURSENM,CREDIT,SEMESTER,FIRSTCOURSEID,
+		MAJOR,TYPE,
+		SCHOOLTIME, TEACHER,PLACE,NUMBER,CLASSHOUR
+		from
+		(
+		select
+		COURSEID,COURSENM,CREDIT,SEMESTER,FIRSTCOURSEID, MAJOR,TYPE,
+		SCHOOLTIME, TEACHER,PLACE,NUMBER,CLASSHOUR,row_number() over(order by
+		COURSEID asc) rowno
+		from CourseInformation
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="CourseId">
+				CourseId like
+				'%$CourseId$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="CourseNM">
+				CourseNM like
+				'%$CourseNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Credit">
+				Credit like
+				'%$Credit$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Semester">
+				Semester like
+				'%$Semester$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="FirstCourseID">
+				FirstCourseID like
+				'%$FirstCourseID$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Major">
+				Major like '%$Major$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Type">
+				Type like '%$Type$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Schooltime">
+				Schooltime like
+				'%$Schooltime$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Teacher">
+				Teacher like
+				'%$Teacher$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Place">
+				Place like '%$Place$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Number">
+				Number like
+				'%$Number$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="ClassHour">
+				ClassHour like
+				'%$ClassHour$%'
+			</isNotEmpty>
+		</dynamic>
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+	</select>
+
+
+	<!-- 查询成绩信息的数量 -->
+	<select id="resultSearchCount" parameterClass="com.srs.bean.CourseSelectObj"
+		resultClass="Integer">
+		select count(1) count
+		from CourseSelect t1 left join CourseInformation
+		t2 on t1.CourseId=t2.CourseId
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="CourseId">
+				t1.CourseId like
+				'%$CourseId$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="CourseNM">
+				CourseNM like
+				'%$CourseNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Term">
+				Term like
+				'%$Term$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="StudentId">
+				StudentId like
+				'%$StudentId$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 查询成绩信息 -->
+	<select id="getResultSearchList" parameterClass="com.srs.bean.CourseSelectObj"
+		resultClass="java.util.HashMap">
+		select CourseNM,StudentId,CourseId,Term,CourseGrade,Pass,Credit
+		from
+		(
+		select
+		CourseNM,StudentId,t1.CourseId,Term,CourseGrade,Pass,Credit,row_number()
+		over(order by t1.COURSEID asc) rowno
+		from CourseSelect t1 left join
+		CourseInformation t2 on t1.CourseId=t2.CourseId
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="CourseId">
+				t1.CourseId like
+				'%$CourseId$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="CourseNM">
+				CourseNM like
+				'%$CourseNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Term">
+				t1.Term like
+				'%$Term$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="StudentId">
+				StudentId like
+				'%$StudentId$%'
+			</isNotEmpty>
+		</dynamic>
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+	</select>
+
+	<!-- 学生信息的数量 -->
+	<select id="stuSearchCount" parameterClass="com.srs.bean.StudentObj"
+		resultClass="Integer">
+		select
+		count(1) count
+		from StudentInformation
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="StudentID">
+				StudentID like
+				'%$StudentID$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="StudentNM">
+				StudentNM like
+				'%$StudentNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Sex">
+				Sex like
+				'%$Sex$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Birthday">
+				Birthday like
+				'%$Birthday$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="BirthPlace">
+				BirthPlace like
+				'%$BirthPlace$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="ClassName">
+				ClassName like
+				'%$ClassName$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Department">
+				Department like
+				'%$Department$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="EntranceTime">
+				EntranceTime like
+				'%$EntranceTime$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 学生信息列表 -->
+	<select id="getStuSearchList" parameterClass="com.srs.bean.StudentObj"
+		resultClass="java.util.HashMap">
+		select StudentID,StudentNM,Sex,ClassName
+		from
+		(
+		select
+		StudentID,StudentNM,Sex,ClassName,row_number() over(order by StudentID
+		asc) rowno
+		from StudentInformation
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="StudentID">
+				StudentID like
+				'%$StudentID$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="StudentNM">
+				StudentNM like
+				'%$StudentNM$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Sex">
+				Sex like
+				'%$Sex$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Birthday">
+				Birthday like
+				'%$Birthday$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="BirthPlace">
+				BirthPlace like
+				'%$BirthPlace$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="ClassName">
+				ClassName like
+				'%$ClassName$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="Department">
+				Department like
+				'%$Department$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="EntranceTime">
+				EntranceTime like
+				'%$EntranceTime$%'
+			</isNotEmpty>
+		</dynamic>
+		) T
+		where rowno between $rowStart$ and $rowEnd$
+	</select>
+
+
+
+</sqlMap>

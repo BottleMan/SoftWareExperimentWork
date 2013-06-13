@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage
+END
+studentDrop.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentDrop.jsp
+END
+studentRegister.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentRegister.jsp
+END
+studentManage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentManage.jsp
+END
+studentRead.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentRead.jsp
+END
+studentEdit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentEdit.jsp
+END
+studentAdd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/web/studentManage/studentAdd.jsp
+END

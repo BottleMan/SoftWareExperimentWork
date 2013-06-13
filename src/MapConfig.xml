@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" />
+	<!-- List the SQL Map XML files. -->
+
+	<sqlMap resource="com/srs/map/USER_SqlMap.xml" />
+	<sqlMap resource="com/srs/map/COURSE_SqlMap.xml" />
+	<sqlMap resource="com/srs/map/COURSE_SELECT_SqlMap.xml" />
+	<sqlMap resource="com/srs/map/STUDENT_SqlMap.xml" />
+	<sqlMap resource="com/srs/map/DEP_SqlMap.xml" />
+
+</sqlMapConfig> 

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Student">
+
+	<sql id="studentColumns">
+    	<![CDATA[
+    		STUDENTID,STUDENTNM,SEX,BIRTHDAY,BIRTHPLACE,CLASSNAME,DEPARTMENT,ENTRANCETIME,FIRSTREGISTER,SECONDREGISTER,THIRDREGISTER,FOURTHREGISTER,DROPOUT
+    	]]>
+	</sql>
+
+	<!-- 获取所有学生信息 -->
+	<select id="getStudentInfoList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		<include refid="studentColumns" />
+		from
+		(select
+		<include refid="studentColumns" />
+		,row_number() over(order by studentid asc) rowno from
+		StudentInformation) T
+		where rowno between $rowStart$ and $rowEnd$
+
+	</select>
+
+	<!-- 获取学生信息数量 -->
+	<select id="getStudentInfoCount" resultClass="java.lang.Integer">
+		select count(1)
+		COUNT from StudentInformation
+	</select>
+
+	<!-- 查询是否有此学号的学生 -->
+	<select id="hadStudent" parameterClass="java.util.HashMap"
+		resultClass="java.lang.Integer">
+		select count(1)
+		COUNT from StudentInformation
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				STUDENTID=#studentId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 根据学号查询学生信息 -->
+	<select id="queryStudentByID" parameterClass="java.util.HashMap"
+		resultClass="com.srs.bean.StudentObj">
+		select
+		<include refid="studentColumns" />
+		from StudentInformation c
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				c.STUDENTID=#studentId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 添加学生信息 -->
+	<insert id="studentAdd" parameterClass="com.srs.bean.StudentObj">
+		insert into
+		StudentInformation(
+		STUDENTID,STUDENTNM,SEX,BIRTHDAY,BIRTHPLACE,CLASSNAME,DEPARTMENT,ENTRANCETIME,FIRSTREGISTER,SECONDREGISTER,THIRDREGISTER,FOURTHREGISTER,DROPOUT
+		)
+		values(#StudentID#,
+		#StudentNM#,#Sex#,#Birthday#,#BirthPlace#,#ClassName#,#Department#,#EntranceTime#,#FirstRegister#,#SecondRegister#,#ThirdRegister#,
+		#FourthRegister#,#DropOut#)
+	</insert>
+	
+	<!-- 添加账号信息 -->
+	<insert id="addUserStu" parameterClass="com.srs.bean.UserObj">
+		insert into userLogin 
+		(userName,password,role) values 
+		(#userName#,#password#,#role#)
+	</insert>
+
+	<!-- 更新学生信息 -->
+	<update id="studentUpdate" parameterClass="com.srs.bean.StudentObj">
+		update StudentInformation
+		<dynamic prepend="set">
+			<isNotNull property="StudentNM" prepend=",">
+				STUDENTNM=#StudentNM:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Sex" prepend=",">
+				SEX=#Sex:INT#
+			</isNotNull>
+			<isNotNull property="Birthday" prepend=",">
+				BIRTHDAY=#Birthday:DATETIME#
+			</isNotNull>
+			<isNotNull property="BirthPlace" prepend=",">
+				BIRTHPLACE=#BirthPlace:VARCHAR#
+			</isNotNull>
+			<isNotNull property="ClassName" prepend=",">
+				CLASSNAME=#ClassName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="Department" prepend=",">
+				DEPARTMENT=#Department:VARCHAR#
+			</isNotNull>
+			<isNotNull property="EntranceTime" prepend=",">
+				ENTRANCETIME=#EntranceTime:DATETIME#
+			</isNotNull>
+			<isNotNull property="FirstRegister" prepend=",">
+				FIRSTREGISTER=#FirstRegister:INT#
+			</isNotNull>
+			<isNotNull property="SecondRegister" prepend=",">
+				SECONDREGISTER=#SecondRegister:INT#
+			</isNotNull>
+			<isNotNull property="ThirdRegister" prepend=",">
+				THIRDREGISTER=#ThirdRegister:INT#
+			</isNotNull>
+			<isNotNull property="FourthRegister" prepend=",">
+				FOURTHREGISTER=#FourthRegister:INT#
+			</isNotNull>
+			<isNotNull property="DropOut" prepend=",">
+				DROPOUT=#DropOut:INT#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				STUDENTID=#studentId#
+			</isNotNull>
+		</dynamic>
+	</update>
+	
+	<!-- 休学处理 -->
+	<update id="studentDrop" parameterClass="java.util.HashMap">
+		update StudentInformation
+		<dynamic prepend="set">
+			<isNotNull property="DropOut" prepend=",">
+				DROPOUT=#DropOut:INT#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				STUDENTID=#studentId#
+			</isNotNull>
+		</dynamic>
+	</update>
+
+	<!--学期注册 -->
+	<update id="studentRegister" parameterClass="java.util.HashMap">
+		update StudentInformation
+		<dynamic prepend="set">
+			<isNotNull property="FirstRegister" prepend=",">
+				FIRSTREGISTER=#FirstRegister:INT#
+			</isNotNull>
+			<isNotNull property="SecondRegister" prepend=",">
+				SECONDREGISTER=#SecondRegister:INT#
+			</isNotNull>
+			<isNotNull property="ThirdRegister" prepend=",">
+				THIRDREGISTER=#ThirdRegister:INT#
+			</isNotNull>
+			<isNotNull property="FourthRegister" prepend=",">
+				FOURTHREGISTER=#FourthRegister:INT#
+			</isNotNull>
+		</dynamic>
+		where STUDENTID=#studentId:VARCHAR#
+	</update>
+
+	<!-- 删除学生基本信息 -->
+	<update id="studentDelete" parameterClass="java.util.HashMap">
+		delete
+		StudentInformation where STUDENTID=#studentId#
+	</update>
+	<update id="studentUserDelete" parameterClass="java.util.HashMap">
+		delete
+		UserLogin where UserName=#studentId#
+	</update>
+
+</sqlMap>

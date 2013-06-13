@@ -1,0 +1,113 @@
+.label_left_title{
+	height:20px;
+	font-size: 12px;
+	background-color: #bfdeff;
+	color: #000000;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+}
+.label_left{
+	height:20px;
+	font-size: 12px;
+	color: #000000;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+}
+.label_right{
+	height:20px;
+	font-size: 12px;
+	color: #000000;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: right;
+}
+.label_center{
+	height:20px;
+	font-size: 12px;
+	color: #000000;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: center;
+}
+.label_comment{
+	height:20px;
+	font-size: 12px;
+	color: #068ed6;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+}
+.label_numble{
+	height:20px;
+	font-size: 12px;
+	color: #fc030f;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+}
+.label_button{
+	height:20px;
+	font-size: 12px;
+	color: #fc030f;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+	background-color:#CCCCCC;
+}
+.label_date{
+	height:20px;
+	font-size: 12px;
+	color: #d7d8d9;
+	line-height: 15px;
+	padding:3px 3px 3px 10px;
+	text-align: left;
+}
+.input_long{
+	width:70%;
+	text-align: left;
+	font-size: 12px;
+	color: #000000;
+	padding:1px 1px 1px 2px;
+	border: 1px solid #7F9DB9;
+	height:20px;
+}
+.input_more{
+	width:100%;
+	text-align: left;
+	font-size: 12px;
+	color: #000000;
+	padding:1px 1px 1px 2px;
+	border: 1px solid #7F9DB9;
+	height:50px;
+}
+.input_moreWeb{
+	margin:auto;
+	width:90%;
+	text-align: left;
+	font-size: 12px;
+	color: #000000;
+	padding:1px 1px 1px 2px;
+	border: 1px solid #7F9DB9;
+	height:75px;
+}
+.input_moretwo{
+	width:100%;
+	text-align: left;
+	font-size: 12px;
+	color: #000000;
+	padding:1px 1px 1px 2px;
+	border: 1px solid #7F9DB9;
+	height:100px;
+}
+.table_special{
+	width:100%;
+	border:1;
+	bordercolor:#FFFFFF; 
+	frame:hsides; 
+	cellspacing:0; 
+	bordercolordark:#4FC8ED; 
+}
+
+

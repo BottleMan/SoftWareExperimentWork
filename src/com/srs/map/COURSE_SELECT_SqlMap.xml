@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CourseSelect">
+
+	<sql id="csColumns">
+    	<![CDATA[
+    		StudentId,
+    		CourseId,
+    		CourseGrade,
+    		Pass,
+    		Term
+    	]]>
+	</sql>
+
+	<!-- 判断选课人数是否已满 -->
+	<select id="personFull" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select (select number from courseInformation where
+		courseId=#courseId#)
+		- (select count(1) from courseSelect where
+		courseId=#courseId#)
+	</select>
+	<!-- 判断学分是否超过18分 -->
+	<select id="pointFull" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select sum(credit)+(select credit from courseInformation
+		where courseId=#courseId#)
+		from CourseSelect t1 left join
+		courseInformation t2 on t1.courseId=t2.courseId
+		where
+		studentId=#studentId#
+	</select>
+	<!-- 判断先修课是否已经通过 -->
+	<select id="hadPre" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) count
+		from CourseSelect
+		where
+		courseId=#preClass# and pass=1
+	</select>
+	<!-- 找到课程的先修课 -->
+	<select id="preClass" parameterClass="java.util.HashMap"
+		resultClass="String">
+		select firstCourseId from courseInformation
+		where
+		courseId=#courseId#
+	</select>
+
+
+	<!-- 查询【退课申请历史数量】 -->
+	<select id="getCancelApplyHisListCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1)
+		COUNT
+		from
+		Retirement
+		<dynamic prepend="where">
+			<isNotNull property="startTime" prepend="and">
+				applytime between #startTime# and #endTime#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 查询【未处理得当退课申请数量】 -->
+	<select id="getCancelCSApplyCount" resultClass="Integer">
+		select count(1)
+		COUNT
+		from
+		Retirement where Handle1=0
+	</select>
+
+	<!-- 查询【退课申请】信息 -->
+	<select id="getCancelCSApply" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		STUDENTID,STUDENTNM,COURSEID,COURSENM,TERM,APPLYTIME
+		from
+		(
+		select
+		t1.STUDENTID,STUDENTNM,t1.COURSEID,COURSENM,SEMESTER as
+		TERM,APPLYTIME,row_number() over(order by t1.COURSEID asc) rowno
+		from
+		Retirement t1 left join CourseInformation t2 on t1.CourseId =
+		t2.CourseId
+		left join StudentInformation t3 on
+		t1.StudentId=t3.StudentId
+		where Handle1=0
+		) T
+		where rowno between
+		$rowStart$ and $rowEnd$
+	</select>
+
+	<!-- 查询【可退课、可注销的数量】 -->
+	<select id="getCancelCSHistoryCount" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from
+		CourseSelect t1 left join
+		Retirement t2 on t1.CourseId=t2.CourseId
+		where
+		t1.CourseID not in
+		(
+		select CourseId from Retirement where StudentID=#studentId# and
+		Handle1=0
+		)
+		and t1.StudentID=#studentId# and pass='0'
+	</select>
+
+	<!-- 查询【可退课、可注销】课程信息 -->
+	<select id="getCancelCSHistory" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select CourseNM,StudentId,CourseId,CourseGrade,Pass,Term
+		from
+		(
+		select
+		CourseNM,t1.StudentId,t1.CourseId,CourseGrade,Pass,Term,row_number()
+		over(order by t1.COURSEID asc) rowno
+		from CourseSelect t1 left join
+		CourseInformation t2 on t1.CourseId =
+		t2.CourseId
+		left join Retirement
+		t3 on t1.CourseId=t3.CourseId
+		where t1.CourseID not in
+		(
+		select CourseId
+		from Retirement where StudentID=#studentId# and Handle1=0
+		) and
+		t1.StudentId=#studentId# and pass='0'
+		) T
+		where rowno between
+		$rowStart$
+		and
+		$rowEnd$
+
+	</select>
+
+	<!-- 查询【退课申请的数量】 -->
+	<select id="hadApplyCourse" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1) COUNT
+		from
+		Retirement
+		<dynamic prepend="where">
+			<isNotNull property="studentId" prepend="and">
+				StudentId=#studentId#
+			</isNotNull>
+			<isNotNull property="courseId" prepend="and">
+				courseId=#courseId#
+			</isNotNull>
+		</dynamic>
+		and handle1=0;
+	</select>
+
+	<!-- 添加【退课申请】 -->
+	<insert id="addCancelApplyCS" parameterClass="java.util.HashMap">
+		insert into
+		Retirement
+		(studentId,courseId,handle1,ApplyTime) values
+		(#studentId#,#courseId#,#handle1#,#ApplyTime#)
+	</insert>
+
+
+	<!-- 处理【退课申请】 -->
+	<update id="dealCancelApply" parameterClass="java.util.HashMap">
+		update Retirement
+		set handle1=#handle1#
+		where courseId=#courseId# and
+		studentId=#studentId#
+	</update>
+
+	<!-- 查询所有课程数量 -->
+	<select id="countCS" resultClass="Integer">
+		select count(1) COUNT
+		from
+		CourseSelect
+		<dynamic prepend="where">
+			<isNotNull property="StudentId" prepend="and">
+				StudentId=#StudentId#
+			</isNotNull>
+			<isNotNull property="Term" prepend="and">
+				Term=#Term#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 查询所有选课历史数量 -->
+	<select id="countCSHistory" resultClass="Integer"
+		parameterClass="java.util.HashMap">
+		select count(1) COUNT
+		from
+		CourseSelect
+		<dynamic prepend="where">
+			<isNotNull property="StudentId" prepend="and">
+				StudentId=#StudentId#
+			</isNotNull>
+			<isNotNull property="term" prepend="and">
+				Term=#term#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<!-- 查询此学生所有选课信息 -->
+	<select id="queryCSbyId" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select
+		CourseNM,StudentId,CourseId,CourseGrade,Credit,Pass,Term
+		from
+		(
+		select
+		CourseNM,StudentId,t1.CourseId,CourseGrade,Credit,Pass,Term,row_number()
+		over(order by t1.COURSEID asc) rowno
+		from CourseSelect t1 left join
+		CourseInformation t2 on t1.CourseId = t2.CourseId
+		<dynamic prepend="where">
+			<isNotNull property="StudentId" prepend="and">
+				StudentId=#StudentId#
+			</isNotNull>
+			<isNotNull property="term" prepend="and">
+				Term=#term#
+			</isNotNull>
+		</dynamic>
+		) T
+		where rowno between
+		$rowStart$ and $rowEnd$
+
+	</select>
+	<!-- 查询所有选课信息 -->
+	<select id="allSC" resultClass="java.util.HashMap"
+		parameterClass="java.util.HashMap">
+		select t1.courseId, schoolTime
+		from
+		CourseSelect t1 left
+		join CourseInformation t2 on t1.courseId=t2.courseId
+		where
+		StudentId=#studentId#
+		and Term=(select Max(currentTerm) from
+		sysConfig)
+	</select>
+
+	<!-- 查询选课信息 -->
+	<select id="thisClass" resultClass="java.util.HashMap"
+		parameterClass="java.util.HashMap">
+		select courseId, schoolTime
+		from CourseInformation
+		where
+		courseId=#courseId#
+	</select>
+
+	<!-- 更新课程信息 -->
+	<update id="csUpdate" parameterClass="com.srs.bean.CourseSelectObj">
+		update CourseSelect
+		<dynamic prepend="set">
+			<isNotNull property="CourseGrade" prepend=",">
+				CourseGrade=#CourseGrade#
+			</isNotNull>
+			<isNotNull property="Pass" prepend=",">
+				Pass=#Pass#
+			</isNotNull>
+			<isNotNull property="Term" prepend=",">
+				Term=#Term#
+			</isNotNull>
+		</dynamic>
+		where COURSEID=#CourseId# and StudentId=#StudentId#
+	</update>
+
+	<!-- 删除课程基本信息 -->
+	<update id="csDelete" parameterClass="java.util.HashMap">
+		delete
+		CourseSelect where
+		COURSEID=#courseId# and StudentId=#studentId# and term=#term#
+	</update>
+
+	<!-- 添加选课信息 -->
+	<insert id="addCS" parameterClass="com.srs.bean.CourseSelectObj">
+		insert into CourseSelect
+		(StudentId,CourseId,CourseGrade,Pass,Term) values
+		(#StudentId#,#CourseId#,#CourseGrade#,#Pass#,#Term#)
+	</insert>
+
+	<!-- 判断课程是否选修过 -->
+	<select id="hadCS" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1)
+		COUNT from CourseSelect
+		<dynamic prepend="where">
+			<isNotNull property="courseId" prepend="and">
+				COURSEID=#courseId#
+			</isNotNull>
+			<isNotNull property="StudentId" prepend="and">
+				StudentId=#StudentId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 判断课程是否提出过申请 -->
+	<select id="hadSubCS" parameterClass="java.util.HashMap"
+		resultClass="Integer">
+		select count(1)
+		COUNT from CourseSubstitude
+		<dynamic prepend="where">
+			<isNotNull property="CourseId" prepend="and">
+				COURSEID=#CourseId#
+			</isNotNull>
+			<isNotNull property="StudentId" prepend="and">
+				StudentId=#StudentId#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 添加【申请代选课】信息 -->
+	<insert id="addSubCS" parameterClass="java.util.HashMap">
+		insert into
+		CourseSubstitude
+		(StudentId,CourseId,Handle2,ApplyTime) values
+		(#StudentId#,#CourseId#,#Handle2#,#ApplyTime#)
+	</insert>
+
+
+</sqlMap>

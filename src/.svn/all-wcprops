@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/Bottle/!svn/ver/2/SRS/src
+END
+init.properties
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/Bottle/!svn/ver/2/SRS/src/init.properties
+END
+oscache.properties
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/Bottle/!svn/ver/2/SRS/src/oscache.properties
+END
+MapConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/Bottle/!svn/ver/2/SRS/src/MapConfig.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/Bottle/!svn/ver/2/SRS/src/log4j.properties
+END
+oscache-cachefilter-disableCacheOnMethods.properties
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bottle/!svn/ver/2/SRS/src/oscache-cachefilter-disableCacheOnMethods.properties
+END
+oscache.tld
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/Bottle/!svn/ver/2/SRS/src/oscache.tld
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/Bottle/!svn/ver/2/SRS/src/struts.xml
+END
+struts.properties
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/Bottle/!svn/ver/2/SRS/src/struts.properties
+END

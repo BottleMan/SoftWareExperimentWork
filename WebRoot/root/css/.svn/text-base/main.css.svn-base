@@ -1,0 +1,80 @@
+*{
+	margin: 0 auto;	
+}
+.baimage{
+	background: url(../image/main.jpg) no-repeat;
+	width:647px;
+	height: 388px;
+	position: relative;	
+}
+.usertest{
+ position: absolute;
+ /*background:url(../image/denglu1.png) no-repeat;*/
+ left:263px;
+ top:154px;
+ width:129px;
+	height: 14px;
+}
+.passwordtest{
+  position: absolute;
+ /*  background:url(../image/denglu1.png) no-repeat;*/
+    left:263px;
+    top:179px;
+   width:129px;
+	height: 14px;
+}
+.suretest{
+	position: absolute;
+	  left:263px;
+    top:204px;
+   width:50px;
+	height: 14px;
+}
+.sureimage{
+		position: absolute;
+	  left:323px;
+    top:204px;
+   width:73px;
+	height: 20px;
+}
+.surefont{
+		position: absolute;
+	  left:398px;
+    top:204px;
+    color: #000000;
+    font-size: 14px;
+  line-height: 23px;
+}
+.bt1{
+	 position: absolute;
+   background:url(../image/bt.gif) no-repeat;
+    left:243px;
+    top:230px;
+   width:50px;
+	height: 18px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 13px;
+	line-height: 20px;
+	color: #000000;
+	border: none;
+}
+
+
+.bt2{
+	 position: absolute;
+   background:url(../image/bt.gif) no-repeat;
+    left:323px;
+    top:230px;
+   width:50px;
+	height: 18px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 20px;
+	color: #000000;
+	border: none;
+}  
+
+a{
+	 text-decoration: none;
+}

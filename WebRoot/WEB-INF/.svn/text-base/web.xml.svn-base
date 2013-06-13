@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<filter>
+		<filter-name>LogonFilter</filter-name>
+		<filter-class>com.srs.web.SimpleFilter</filter-class>
+		<init-param>
+			<param-name>logon_uri</param-name>
+			<param-value>a</param-value>
+		</init-param>		
+	</filter>
+	<filter-mapping>
+		<filter-name>LogonFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LogonFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LogonFilter</filter-name>
+		<url-pattern>*.servlet</url-pattern>
+	</filter-mapping>
+
+	<!--ecside 过滤器 -->
+	<filter>
+		<filter-name>ecsideExport</filter-name>
+		<filter-class>org.ecside.filter.ECSideFilter</filter-class>
+		<init-param>  
+			<param-name>useEasyDataAccess</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>useEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ecsideExport</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+	 
+	<!-- 用来ecside显示-->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<!-- 配置struts2的过滤器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.servlet</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	
+	<!-- 用于struts2时防止内存泄漏  -->
+	<filter> 
+	  <filter-name>struts-cleanup</filter-name> 
+	  <filter-class> 
+	   org.apache.struts2.dispatcher.ActionContextCleanUp 
+	  </filter-class> 
+	</filter> 
+	<filter-mapping> 
+	  <filter-name>struts-cleanup</filter-name> 
+	  <url-pattern>/*</url-pattern> 
+	</filter-mapping>
+
+	<!-- 用于初始化Spring的Listener -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	<!-- 用于初始化Spring的配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring-context/applicationContext-common.xml,
+			/WEB-INF/spring-context/applicationContext-system.xml,
+ 			/WEB-INF/spring-context/applicationContext-user.xml, 
+ 			/WEB-INF/spring-context/applicationContext-dep.xml, 
+ 			/WEB-INF/spring-context/applicationContext-student.xml,
+  			/WEB-INF/spring-context/applicationContext-course.xml
+  			/WEB-INF/spring-context/applicationContext-courseSelect.xml
+		</param-value>
+	</context-param>
+	
+	<!-- servlet -->
+	<servlet>
+		<servlet-name>GetBeanServlet</servlet-name>
+		<servlet-class>
+			com.srs.servlet.GetBeanServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetBeanServlet</servlet-name>
+		<url-pattern>/servlet/GetBeanServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 获取验证码 -->
+	<servlet>
+		<servlet-name>VerifyImageServlet</servlet-name>
+		<servlet-class>com.srs.servlet.VerifyImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VerifyImageServlet</servlet-name>
+		<url-pattern>/servlet/verify.png</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+	<session-timeout>120</session-timeout>
+	</session-config>
+	
+</web-app>

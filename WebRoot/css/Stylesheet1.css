@@ -1,0 +1,1146 @@
+body {
+	background-color: #D9D9D9;
+	color: #252525;
+	margin: 0 auto;
+	padding: 0px;
+	width: 1000px;
+	text-align: center;
+}
+
+* {
+	font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+	border: none;
+}
+
+a:link {
+	color: #626262;
+}
+
+a:visited {
+	color: #790072;
+}
+
+a:hover {
+	color: red;
+	font-weight: normal;
+}
+
+a:active {
+	color: red;
+}
+
+.xsnazzy {
+	background: transparent;
+	margin: 10px 10px 0px 10px;
+}
+
+.xtop,.xbottom {
+	display: block;
+	background: transparent;
+	font-size: 1px;
+}
+
+.xb1,.xb2,.xb3,.xb4 {
+	display: block;
+	overflow: hidden;
+}
+
+.xb1,.xb2,.xb3 {
+	height: 1px;
+}
+
+.xb2,.xb3,.xb4 {
+	background: #eeeeee;
+	border-left: 1px solid #d6d6d6;
+	border-right: 1px solid #d6d6d6;
+}
+
+.xb1 {
+	margin: 0 5px;
+	background: #d6d6d6;
+}
+
+.xb2 {
+	margin: 0 3px;
+	border-width: 0 2px;
+}
+
+.xb3 {
+	margin: 0 2px;
+}
+
+.xb4 {
+	height: 2px;
+	margin: 0 1px;
+}
+
+.xboxcontent {
+	display: block;
+	background: #eeeeee;
+	border: 0 solid #d6d6d6;
+	width: 100%
+}
+
+.xb5,.xb6,.xb8 {
+	background: #e6edf5;
+}
+
+.but1 {
+	border: none;
+	height: 20px;
+	background: none;
+}
+
+.but,.buthover,.but_Long,.buthover_long {
+	color: Black;
+	cursor: pointer;
+	line-height: 23px;
+	border: none;
+}
+
+.but {
+	background: url(../image/ButtonIcon/buttonBj.gif) no-repeat -4px -4px;
+	height: 23px;
+	width: 52px;
+}
+
+.buthover {
+	background: url(../images/ButtonIcon/buttonBj.gif) no-repeat -4px -30px;
+	height: 23px;
+	width: 52px;
+}
+
+.but_Long {
+	background: url(../images/ButtonIcon/buttonBj.gif) no-repeat -4px -56px;
+	height: 23px;
+	width: 67px;
+}
+
+.buthover_long {
+	background: url(../images/ButtonIcon/buttonBj.gif) no-repeat -4px -82px;
+	height: 23px;
+	width: 67px;
+}
+
+.boxA {
+	border: 1px solid #a1bca3;
+	padding: 0px 2px 0px 2px;
+	width: 120px;
+	height: 20px;
+	line-height: 18px;
+}
+
+.boxB {
+	border: 1px solid #239418;
+	background-color: #fcfacb;
+	padding: 0px 2px 0px 2px;
+	width: 120px;
+	height: 20px;
+	line-height: 18px;
+}
+
+.img_bor {
+	border-bottom: 1px dotted #b4b4b4;
+}
+
+.img_bott {
+	margin-bottom: 8px;
+	text-align: left;
+}
+
+.center_text {
+	margin-top: 10px;
+	text-align: center;
+	line-height: 60px;
+	color: red;
+}
+
+.ge {
+	clear: both;
+	font-size: 0px;
+	line-height: 0px;
+	height: 1px
+}
+
+.div_hei {
+	height: 15px;
+}
+
+.P_center {
+	text-align: center;
+	margin: 0;
+	padding: 0 0 8px 0px;
+}
+
+#TopDiv {
+	width: 1000px;
+	border-top: 4px solid #d30d0e;
+}
+
+.TopPic {
+	width: 1000px;
+	height: 125px;
+	text-align: left;
+	background-image: url(../images/top/topPic.jpg);
+}
+
+#menu {
+	width: 100%;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+	CLEAR: both;
+	BACKGROUND: url(/Images/menu/menuBj.gif) repeat-x;
+	height: 30px;
+}
+
+#menu li {
+	FLOAT: left;
+	width: 80px;
+	border-right: 1px solid #0e528c;
+	border-left: 1px solid #b1b1a0;
+	list-style-type: none;
+}
+
+#menu a {
+	width: 80px;
+	text-align: center;
+	display: block;
+	line-height: 27px;
+	color: #fff;
+}
+
+#menu a:link {
+	width: 80px;
+	text-align: center;
+	display: block;
+	line-height: 27px;
+	color: #fff;
+}
+
+#menu a:hover {
+	background-color: #005dac;
+}
+
+/* #menu a:active
+{
+	background-color:#d30d0e;
+	}	
+
+
+ ==========  锟斤拷锟斤拷锟斤拷 ==========*/
+#container {
+	width: 1000px;
+	padding-bottom: 10px;
+	background-color: White;
+	clear: left;
+	overflow: hidden;
+	/*zoom:1;*/
+}
+
+#leftDiv {
+	float: left;
+	width: 125;
+}
+
+#rightDiv {
+	float: left;
+	width: 70%;
+}
+
+#middleDiv {
+	float: left;
+	width: 838;
+}
+
+#container {
+	width: 1200px;	
+	float: center;
+}
+
+#pic {
+	position: relative;
+	left: 0;
+	top: 50%;
+}
+
+#loginer {
+	width: 100%;
+}
+
+.img_top {
+	margin-top: 10px;
+}
+
+#loginer p {
+	color: #626262;
+	clear: both;
+	width: 100%;
+	margin: 0;
+	padding: 0 0 8px 0px;
+	text-align: center;
+}
+
+#TreeDiv {
+	width: 100%;
+	text-align: left;
+	overflow: hidden;
+	/*	text-overflow:ellipsis; */
+}
+
+.tdiv {
+	padding: 5px 8px 10px 8px;
+}
+
+.NodeEdit1 {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.HoverTreeNode1 {
+	line-height: 20px;
+	color: red;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.SelectedTreeNode1 {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.TreeNode1 {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.TreeView2 {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+#SubDiv {
+	width: 100%;
+	text-align: left;
+}
+
+.p_div {
+	padding: 8px 0 0 0;
+	text-align: center;
+}
+
+.ss_div {
+	width: 162px;
+	margin-left: 16px !important;
+	margin-left: 16px;
+}
+
+.ss_div ul {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	/*zoom: 1;*/
+}
+
+.ss_div li {
+	list-style-type: none;
+	float: left;
+}
+
+.a_but {
+	width: 40px;
+	height: 21px;
+	line-height: 21px;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 0px !important;
+	margin-top: 1px;
+	border: 1px solid #a1bca3;
+	border-left: none;
+	background-color: #e6f5c6;
+}
+
+/*  ==========  锟揭憋拷 ==========*/ /*
+#rightDiv {
+	float: left;
+	width: 76% !important;
+	width: 77%;
+	margin: 0px 0px 0px 0px !important;
+	margin: 0px;
+	padding: 0px ! imporatnt;
+	padding: 10px 10px 0px 0px;
+}
+*/ /*  ==========  New  ==========*/
+.New_A,.New_B,.New_C {border =0 width:100%;
+	overflow: hidden;
+	/*zoom:1;*/
+}
+
+.New_A_announcement {
+	width: 100%;
+	height: 200px;
+	float: left;
+}
+
+.New_A_search,.New_B_L,.New_B_R,.New_C_L,.New_C_R,.Display_Div,.Display_DivX
+	{
+	background: url(../images/New_bj.gif) repeat-x top left;
+	border: 1px solid #d6d6d6;
+}
+
+.New_title {
+	border-bottom: 1px solid #aac2d4;
+	margin: 10px 15px 10px 15px;
+	padding: 0 10px 0 10px;
+	text-align: left;
+}
+
+.New_title_text {
+	width: 85%;
+	padding-left: 8px;
+	line-height: 25px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color: #1b83d0;
+}
+
+.New_title  a img {
+	border: none;
+	float: right;
+	margin-top: -15px;
+}
+
+.New_bull {
+	margin: 5px 10px 0px 10px;
+	padding: 0 10 0 10px;
+}
+
+.New_bull table a {
+	height: 25px;
+	line-height: 25px;
+	color: #626262;
+}
+
+.New_bull table font {
+	color: #5f729e;
+	font-size: 10px;
+	font-family: Verdana;
+}
+
+.New_A_search {
+	width: 31% !important;
+	width: 32.5%;
+	float: left;
+	margin-left: 8px !important;
+	margin-left: 10px;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	padding: 5px 15px 5px 15px;
+	text-align: left;
+	border: 1px solid #d6d6d6;
+}
+
+.New_A_search p {
+	margin: 0;
+	padding: 0 0 3px 0px;
+}
+
+.New_A_search a {
+	font-size: 14px;
+	font-weight: bold;
+	display: inline-block;
+	margin-left: 10px;
+	line-height: 23px;
+	width: 80%;
+	color: #1b83d0;
+	border-bottom: 1px dotted #b4b4b4;
+}
+
+.New_listBox {
+	width: 140px;
+	height: 23px;
+	border: 1px solid #a1bca3;
+}
+
+.ge_ge {
+	border-bottom: 1px solid #aac2d4;
+	margin-top: 3px !important;
+	margin-bottom: 5px !important;
+	margin: 6px 0 9px 0;
+}
+
+.New_B {
+	padding: 10px 10px 10px 0px;
+}
+
+.New_B_L,.New_C_L {
+	float: left;
+	width: 49%;
+	height: 210px;
+}
+
+.New_B_R	   ,.New_C_R {
+	float: left;
+	width: 48% !important;
+	width: 50%;
+	height: 210px;
+	margin-left: 10px !important;
+	margin-left: 8px;
+}
+
+.New_C {
+	padding: 0 10px 0px 0px;
+}
+
+.A_New {
+	width: 94% !important;
+	width: 100%;
+	text-align: left;
+	padding: 0 0 0 20px;
+}
+
+.A_New table {
+	width: 100%;
+}
+
+.A_New a {
+	height: 23px;
+	line-height: 23px;
+}
+
+.A_New  span,.Diaplay_list span {
+	color: #5f729e;
+}
+
+.A_New  span,.A_New  font,.Diaplay_list font {
+	font-size: 10px;
+	font-family: Segoe UI;
+}
+
+/*  ==========  Right  New List  ========== */
+.Display_Div {
+	height: auto !important;
+	min-height: 620px !important;
+	height: 650px;
+	min-height: 650px;
+}
+
+.Display_DivX {
+	height: auto !important;
+	min-height: 320px !important;
+	height: 350px;
+	min-height: 350px;
+}
+
+.Div_L {
+	text-align: left;
+}
+
+.Diaplay_list {
+	width: auto !important;
+	width: 100%;
+	text-align: left;
+	padding: 0 !important;
+	padding: 15px 40px 0px 40px;
+	margin: 20px 40px 0 40px !important;
+	margin: 0px;
+}
+
+.liat_Dis {
+	overflow: hidden;
+}
+
+.Diaplay_list table {
+	width: 98%;
+	margin-bottom: 10px;
+}
+
+.Diaplay_list table td a {
+	height: 23px;
+	line-height: 23px;
+}
+
+.List_pager {
+	border-top: 1px dotted #b7c7d3;
+	margin: 10px 40px 20px 40px;
+	padding-top: 10px;
+}
+
+.display_content {
+	
+}
+
+.table_content_bj {
+	background: url(../images/New_bj.gif) repeat-x top left;
+	padding: 10px;
+	height: auto !important;
+	height: 400px;
+	min-height: 400px;
+}
+
+.table_content_title {
+	color: gray;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.table_content_div {
+	height: 30px;
+	line-height: 30px;
+	color: #fd7801;
+}
+
+.table_content_text {
+	line-height: 20px;
+	text-align: left;
+	padding: 10px;
+	color: #626262;
+	height: auto !important;
+	height: 400px;
+	min-height: 400px;
+}
+
+.table_content_text span {
+	text-indent: 25px;
+}
+
+.table_content_text img {
+	float: left;
+	margin: 15px;
+}
+
+.close_div {
+	font-weight: bold;
+	text-align: center;
+	margin-top: 15px;
+	height: 30px;
+}
+
+.close_div a {
+	color: red;
+}
+
+.mypager {
+	
+}
+
+.inputbox {
+	
+}
+
+.feedback_display {
+	padding: 10px 20px 0 30px;
+	margin: 0;
+	width: 93% !important;
+	width: 100%;
+}
+
+.feedback_display li {
+	list-style-type: none;
+}
+
+.feedback_display li font {
+	line-height: 30px;
+}
+
+.feedback_display li b {
+	color: #626262;
+	line-height: 35px;
+	width: 80px;
+	display: inline-block;
+	text-align: right;
+}
+
+.li_b_div {
+	overflow: hidden;
+}
+
+.li_b_div font {
+	float: left;
+}
+
+.li_b_div b {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.li_b_leftdiv {
+	width: 86%;
+	float: left;
+	padding: 10px 0px 10px 0px;
+}
+
+.li_botton {
+	text-align: center;
+	margin: 20px 0px 20px 0;
+}
+
+/*  ============    锟斤拷准锟斤拷锟斤拷  ============   */
+.Simple_Search,.Complex_Search {
+	overflow: hidden;
+	border: 1px solid white;
+	margin-bottom: 20px;
+}
+
+.Simple_Search ul,.Complex_Search_left ul,.Complex_Search_right ul {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.Simple_Search ul li {
+	list-style: none;
+	float: left;
+	margin-right: 25px;
+	width: 193px;
+}
+
+.Complex_Search_left,.Complex_Search_right {
+	width: 35%;
+	float: left;
+}
+
+.Complex_Search_left ul li,.Complex_Search_right ul li {
+	list-style: none;
+	margin-bottom: 8px;
+}
+
+.Simple_Search b,.Complex_Search_left b,.Complex_Search_right	 b {
+	color: #626262;
+	line-height: 23px;
+}
+
+/*  ========== 锟斤拷锟斤拷锟剿碉拷 ========== */
+#ara {
+	
+}
+
+#Sah {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+#Sah li {
+	float: left;
+	list-style: none;
+	cursor: pointer;
+	width: 98px;
+	height: 27px;
+	text-align: center;
+}
+
+#Sah .df {
+	color: #f30;
+	font-weight: bold;
+}
+
+#Sah .df a {
+	width: 98px;
+	height: 27px;
+	display: inline-block;
+	background-image: url(../images/tab_1.gif);
+}
+
+#Sah li a {
+	display: inline-block;
+	line-height: 26px;
+	width: 98px;
+	height: 27px;
+	background-image: url(../images/tab_2.gif);
+}
+
+#Sah li a:hover {
+	width: 98px;
+	height: 27px;
+	background-image: url(../images/tab_1.gif);
+}
+
+#Sah li a:active {
+	width: 98px;
+	height: 27px;
+	background-image: url(../images/tab_1.gif);
+}
+
+.rl {
+	width: 100%;
+	padding: 10px 0px 10px 20px;
+	height: auto !important;
+	min-height: 200px !important;
+	height: 200px;
+	min-height: 200px;
+}
+
+.list_table {
+	width: 100%;
+	overflow: hidden;
+	margin-top: -1px;
+	border: 1px solid #9db0bc;
+	text-align: center;
+}
+
+.list_table table {
+	
+}
+
+.page_table {
+	border-top: 1px dotted #9db0bc;
+	width: auto !important;
+	width: 90%;
+	margin: 0px 20px 20px 20px !important;
+	margin: 0px;
+	padding: 10px 0px 0px 10px !important;
+	padding: 10px 10px 20px 0px;
+}
+
+/*  ==========  锟斤拷准锟斤拷锟斤拷锟斤拷  ==========*/
+.serve_left {
+	float: left;
+	width: 30%;
+}
+
+.serve_right {
+	float: left;
+	width: auto !important;
+	width: 69% !important;
+	width: 69%;
+	margin-top: 10px;
+}
+
+.address {
+	width: 100%;
+}
+
+.address ul {
+	width: auto !important;
+	width: 100%;
+	margin: 0px 15px 0px 20px !important;
+	margin: 0px;
+	padding: 10px 0 20px 0 !important;
+	padding: 10px 15px 20px 20px;
+	text-align: left;
+}
+
+.address ul li {
+	list-style: none;
+	margin-bottom: 8px;
+	font-family: Verdana;
+}
+
+.address ul li b {
+	color: #626262;
+}
+
+.address ul li a {
+	color: #7E7D7D;
+}
+
+.serve_text {
+	text-align: left;
+	text-indent: 25px;
+	color: #626262;
+	line-height: 20px;
+	margin: 0 30px 20px 30px !important;
+	margin: 0px;
+	padding: 0px !important;
+	padding: 0px 30px 20px 30px;
+}
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷*/
+.serve_Info {
+	width: 100%;
+	overflow: hidden;
+}
+
+.serve_InfoName,.serve_InfoNameX {
+	overflow: hidden;
+	height: 40px;
+}
+
+.serve_InfoName {
+	width: 95%;
+}
+
+.serve_InfoNameX {
+	width: 100%;
+	text-align: center;
+}
+
+.serve_InfoName ul {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.serve_InfoName ul li,.serve_InfoNameX ul li {
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+}
+
+.serve_InfoName ul li span,.serve_InfoNameX ul li span {
+	color: #D30D0E;
+	line-height: 23px;
+	font-weight: bold;
+}
+
+.Info_leftMenu {
+	float: left;
+	width: 15%;
+	text-align: right;
+}
+
+.Info_rightC {
+	float: left;
+	width: auto !important;
+	width: 81.5% !important;
+	width: 85%;
+	clear: right;
+	padding-left: 20px;
+	height: auto !important;
+	min-height: 400px !important;
+	height: 400px;
+	min-height: 400px;
+	border-left: 1px solid #D2E1EB;
+}
+
+.Info_rightC table td b {
+	color: #626262;
+}
+
+.LookOver a {
+	line-height: 50px;
+	font-weight: bold;
+	color: Red;
+	text-decoration: underline;
+}
+
+.LookOver a:link {
+	color: Red;
+}
+
+.LookOver a:hover {
+	font-weight: bold;
+}
+
+/* =================   锟斤拷准锟斤拷锟斤拷 Download   =====================  */
+.NewDownload {
+	text-align: left;
+	width: 100%;
+	clear: left;
+}
+
+.DownloadTitle_top {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	float: left;
+	clear: both;
+}
+
+.DownloadTitle_top li {
+	list-style: none;
+	float: left;
+	margin-bottom: 10px !important;
+	padding-bottom: 0 !important;
+	padding-bottom: 10px;
+}
+
+.DownloadTitle {
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.DownloadTitle a {
+	color: #E4532B;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.relatedtext {
+	padding-left: 0 !important;
+	padding-left: 25px;
+	margin-left: 25px !important;
+	margin-left: 0;
+}
+
+.relatedtext  ul {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.relatedtext  ul li {
+	list-style: none;
+	float: left;
+	padding-right: 10px;
+}
+
+.relatedtext  ul li span {
+	line-height: 25px;
+}
+
+.oldDownload {
+	text-align: left;
+	border-top: 1px dotted #9db0bc;
+	margin-top: 15px;
+	padding-top: 15px;
+}
+
+/* =================   锟睫改碉拷 InfoAmend =====================  */
+.InfoTable {
+	width: 100%;
+}
+
+.Codetag {
+	text-align: right;
+	padding-right: 20px;
+}
+
+.Codetag span {
+	line-height: 23px;
+	color: #aa0000;
+	font-style: italic;
+}
+
+.criteria {
+	text-align: left;
+	padding: 5px 0px 10px 0px;
+}
+
+.criteria b {
+	color: #c00000;
+}
+
+/*  ==========  Query  ==========*/
+.FieS {
+	border: 1px solid #CCCCCC;
+}
+
+.FieS legend {
+	padding: 0 5px 0 5px !important;
+	font-weight: bold;
+	color: #c00000;
+}
+
+.FieSdiv {
+	padding: 0 !important;
+	margin: 5px 5px 5px 5px !important;
+	margin: 12px 15px 15px 15px;
+	text-align: left;
+}
+
+/*  ==========  锟斤拷委锟斤拷 锟斤拷  ==========*/
+.NavBar {
+	width: 187px !important;
+	width: 192px;
+	white-space: nowrap;
+	/**text-overflow:ellipsis; */
+	overflow: hidden;
+	height: auto !important;
+	min-height: 270px !important;
+	height: 270px;
+	min-height: 270px;
+	border: 1px solid #CCCCCC;
+}
+
+.NavBar table {
+	width: 150px;
+	white-space: nowrap;
+	/**text-overflow:ellipsis; */
+	overflow: hidden;
+	cursor: pointer;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 3px;
+}
+
+.NavBar table text {
+	border: 1px solid red;
+}
+
+.NavBar table:link {
+	background-color: Red;
+}
+
+.Empty {
+	width: 187px;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.Empty table {
+	padding: 0px;
+	border: none;
+}
+
+.Empty table img {
+	border: none;
+	padding: 0px;
+}
+
+.Empty table table {
+	color: #626262;
+	padding-left: 5px;
+	width: 100%;
+}
+
+TreeNode {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 20px;
+	display: block;
+	width: 100%;
+	border: 1px solid black;
+}
+
+.TreeView {
+	
+}
+
+.HoverTreeNode {
+	background-color: #E3E3E3;
+	color: Red;
+}
+
+.SelectedTreeNode {
+	background-color: #E3E3E3;
+	color: Red;
+}
+
+.NodeEdit {
+	
+}
+
+/*  ==========  Footer  ==========*/
+#footer {
+	width: 1000px;
+	background-color: #a6a6a6;
+	text-align: center;
+	margin: 0;
+	padding: 10px 0 10px 0;
+}
+
+#footer p {
+	margin: 0;
+	padding: 0;
+	line-height: 20px;
+	text-align: center;
+}
+
+#footer p  a {
+	text-decoration: underline;
+	color: Red;
+	font-weight: normal;
+}
+/*==========	manage  ===========*/

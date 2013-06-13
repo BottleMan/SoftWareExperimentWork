@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 引入init.properties中属性 -->
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:init.properties</value>
+		</property>
+	</bean>
+	<!-- 配置数据源,连接池使用c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close" dependency-check="none">
+		<property name="driverClass">
+			<value>${datasource.driverClassName}</value>
+		</property>
+		<!-- 指定连接数据库的URL -->
+		<property name="jdbcUrl">
+			<value>${datasource.url}</value>
+		</property>
+		<!-- 指定数据库的用户名 -->
+		<property name="user">
+			<value>${datasource.username}</value>
+		</property>
+		<!-- 指定数据库的密码 -->
+		<property name="password">
+			<value>${datasource.password}</value>
+		</property>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement">
+			<value>${c3p0.acquireIncrement}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${c3p0.initialPoolSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${c3p0.minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${c3p0.maxPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${c3p0.maxIdleTime}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>${c3p0.idleConnectionTestPeriod}</value>
+		</property>
+		<property name="maxStatements">
+			<value>${c3p0.maxStatements}</value>
+		</property>
+		<property name="numHelperThreads">
+			<value>${c3p0.numHelperThreads}</value>
+		</property>
+	</bean>
+	<!-- 与ibatis联系起来 -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:MapConfig.xml">
+		</property>
+	</bean>
+
+	<!-- 配置事务管理器 bean -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+
+	<tx:advice id="serviceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--当代理的service层中的方法抛出异常的时候才回滚,必须加rollback-for参数 -->
+			<tx:method name="commit*" propagation="REQUIRED"
+				rollback-for="Throwable" />
+			<!--除了上面标识的方法,其他方法全是只读方法 -->
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置哪些类的方法需要进行事务管理 <aop:config proxy-target-class="true"> <aop:pointcut 
+		id="servicePointcut" expression="execution(* com.search.dao.outWeb.WorkApplyDao.*(..))"/> 
+		<aop:advisor pointcut-ref="servicePointcut" advice-ref="serviceAdvice"/> 
+		</aop:config> -->
+</beans>

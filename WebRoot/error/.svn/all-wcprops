@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/error
+END
+rightError.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/error/rightError.jsp
+END
+loginerror.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/error/loginerror.jsp
+END
+sessionInvalid.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Bottle/!svn/ver/2/SRS/WebRoot/error/sessionInvalid.jsp
+END

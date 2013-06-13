@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="course" extends="search-default" namespace="/web">
+		<!-- 添加课程基本信息 -->
+		<action name="courseAdd" class="courseAction" method="addCourse" />
+		
+		<!-- 删除课程基本信息 -->
+		<action name="deleteCourseInfor" class="courseAction" method="deleteCourseInfor" />
+
+		<!-- 更新课程基本信息 -->
+		<action name="courseInforUpdate" class="courseAction" method="courseInforUpdate" />
+
+		<!-- 根据课程编号来查询课程信息 -->
+		<action name="getCourseInforById" class="courseAction" method="getCourseInforById">
+			<result name="edit">courseEdit.jsp</result>
+			<result name="read">courseRead.jsp</result>
+		</action>
+
+		<!-- 管理课程基本信息 -->
+		<action name="getCourseList" class="courseAction" method="getCourseList">
+			<result name="success">courseManage.jsp
+			</result>
+		</action>
+
+		<!-- 获取【可选课】的课程基本信息 -->
+		<action name="getRegisterCourseList" class="courseAction"
+			method="getRegisterCourseList">
+			<result name="success">crManage/courseManage.jsp
+			</result>
+		</action>
+
+		<!-- 获取【可代选课】的课程基本信息 -->
+		<action name="getSubRegisterCourseList" class="courseAction"
+			method="getSubRegisterCourseList">
+			<result name="success">subCS.jsp
+			</result>
+		</action>
+		
+		<!-- 申请代选 -->
+		<action name="subCS" class="courseAction" method="subCS">
+		</action>
+		
+		<!-- 获取【可撤销代选课】的课程基本信息 -->
+		<action name="getCancelSubRCList" class="courseAction"
+			method="getCancelSubRCList">
+			<result name="success">subCancelCS.jsp
+			</result>
+		</action>
+
+		<!-- 撤销申请代选 -->
+		<action name="subCancelCS" class="courseAction" method="subCancelCS">
+		</action>
+
+	</package>
+</struts>

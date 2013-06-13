@@ -1,0 +1,10 @@
+.TdTitle img
+{
+	width:13px;
+	height:13px;
+	float:left;
+	cursor:pointer;
+}
+#floatdiv {
+	BORDER-RIGHT: orange 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: orange 1px solid; DISPLAY: none; PADDING-LEFT: 6px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Shadow(color=#999999,direction=135,strength=3); LEFT: 0px; PADDING-BOTTOM: 6px; BORDER-LEFT: orange 1px solid; WIDTH: 300px; COLOR: black; LINE-HEIGHT: 18px; PADDING-TOP: 6px; BORDER-BOTTOM: orange 1px solid; POSITION: absolute; TOP: 5px; HEIGHT: 16px; BACKGROUND-COLOR: #ffffe6; TEXT-ALIGN: left
+}

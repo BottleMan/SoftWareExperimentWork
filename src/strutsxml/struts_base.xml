@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 定义一个系统的全局包 -->
+	<package name="search-default" extends="struts-default">
+		<!-- 定义全部的拦截器 -->
+		<interceptors>
+			<!-- 定义第一个自定义的拦截器，用于身份校验 -->
+			<interceptor name="isloginInterceptor"
+				class="com.srs.web.interceptor.IsLoginInterceptor" />
+			<!-- 定义一个拦截器栈，系统所有Action都需配置 -->
+			<interceptor-stack name="islogin">
+				<interceptor-ref name="isloginInterceptor"/>
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<!-- 配置全局结果，用于身份校验结果返回 -->
+			<result name="sql">/exception.jsp</result>
+			<result name="root">/exception.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="rightError">/error/rightError.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="sql" exception="java.sql.SQLException" />
+			<exception-mapping result="root" exception="java.lang.Exception" />
+		</global-exception-mappings>
+	</package>
+
+</struts>
